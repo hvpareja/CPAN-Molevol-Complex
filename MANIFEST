@@ -1,0 +1,16 @@
+Changes
+lib/Molevol/Complex.pm
+lib/Molevol/Contact.pm
+lib/Molevol/Surface.pm
+lib/Molevol/Subsets.pm
+lib/Molevol/Report.pm
+bin/dssp
+bin/coe
+doc/Complex.pod
+Makefile.PL
+MANIFEST			This list of files
+README
+t/00-load.t
+t/manifest.t
+t/pod-coverage.t
+t/pod.t
