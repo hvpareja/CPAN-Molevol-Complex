@@ -11,7 +11,7 @@ WriteMakefile(
     LICENSE          => 'Perl_5',
     PL_FILES         => {},
     MIN_PERL_VERSION => 5.006,
-    EXE_FILES        => [ 'bin/coe', 'bin/dssp' ],
+    EXE_FILES        => [ 'bin/mecom', 'bin/dssp' ],
     MAN3PODS         => {
 	"doc/Complex.pod" => "blib/man3/Molevol::Complex.3pm"
     },
