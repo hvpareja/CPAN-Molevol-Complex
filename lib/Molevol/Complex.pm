@@ -4,7 +4,7 @@ package Molevol::Complex;
 use 5.006;
 use strict;
 no strict "refs";
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # Own modules
 use Molevol::Contact; 

@@ -4,7 +4,7 @@ Molevol::Complex - A Perl module for protein contact interfaces evolutive analis
 
 =head1 VERSION
 
-Version 1.00
+Version 1.01
 
 =head1 SYNOPSIS
 

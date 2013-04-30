@@ -7,7 +7,7 @@ use Test::More;
 plan tests => 1;
 
 BEGIN {
-    use_ok( 'Coevolution::Compcoe' ) || print "Bail out!\n";
+    use_ok( 'Molevol::Complex' ) || print "Bail out!\n";
 }
 
-diag( "Testing Coevolution::Compcoe $Coevolution::Compcoe::VERSION, Perl $], $^X" );
+diag( "Testing Molevol::Complex $Molevol::Complex::VERSION, Perl $], $^X" );

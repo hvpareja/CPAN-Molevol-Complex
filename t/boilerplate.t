@@ -50,7 +50,7 @@ TODO: {
     "placeholder date/time"       => qr(Date/time)
   );
 
-  module_boilerplate_ok('lib/Coevolution/Compcoe.pm');
+  module_boilerplate_ok('lib/Molevol/Complex.pm');
 
 
 }
