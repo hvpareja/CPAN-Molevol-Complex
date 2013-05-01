@@ -1,15 +1,15 @@
 =head1 NAME
 
-Molevol::Complex - A Perl module for protein contact interfaces evolutive analisys
+Molevol::Complex - A Perl module for protein contact interfaces evolutive analysis
 
 =head1 VERSION
 
-Version 1.01
+Version 1.03
 
 =head1 SYNOPSIS
 
     # Create the object
-    my $coe = Coevolution::Compcoe->new(
+    my $coe = Molevol::Complex->new(
                                     pdb         => 'pdb/files/path/2occ.pdb',
                                     alignment   => 'aln/files/path/chainM.aln',
                                     chain       => 'M',
@@ -25,24 +25,24 @@ Version 1.01
 =head1 DESCRIPTION
 
 This module integrates a workflow aimed to address the evolvability of the
-contact interfaces within a protein complex. The method C<Coevolution::Compcoe-E<gt>run>
-launchs the whole analisys. Also, such workflow is divided into the following steps:
+contact interfaces within a protein complex. The method C<Molevol::Complex-E<gt>run>
+launchs the whole analysis. Also, such workflow is divided into the following steps:
 
 =over 4
 
-=item B<Step 1>, Structural analisys: C<Coevolution::Compcoe-E<gt>run_struct>
+=item B<Step 1>, Structural analysis: C<Molevol::Complex-E<gt>run_struct>
 
-=item B<Step 2>, Sub-sets filtering: C<Coevolution::Compcoe-E<gt>run_filtering>
+=item B<Step 2>, Sub-sets filtering: C<Molevol::Complex-E<gt>run_filtering>
 
-=item B<Step 3>, Sub-alignments building: C<Coevolution::Compcoe-E<gt>run_subalign>
+=item B<Step 3>, Sub-alignments building: C<Molevol::Complex-E<gt>run_subalign>
 
-=item B<Step 4>, Evolutionary calcs: C<Coevolution::Compcoe-E<gt>run_yang>
+=item B<Step 4>, Evolutionary calcs: C<Molevol::Complex-E<gt>run_yang>
 
-=item B<Step 5>, Statistical analisys: C<Coevolution::Compcoe-E<gt>run_stats1>
+=item B<Step 5>, Statistical analysis: C<Molevol::Complex-E<gt>run_stats1>
 
 =back
 
-A detailed explanation about this methods is reported below.
+A detailed explanation about these methods is reported below.
 
 =head1 REQUERIMENTS
 
@@ -62,10 +62,10 @@ A detailed explanation about this methods is reported below.
 
 =head2 new()
 
-    $obj = Coevolution::Compcoe->new(%input_data);
+    $obj = Molevol::Complex->new(%input_data);
 
-The new class method construct a new L<Coevolution::Compcoe> object. The returned
-object can be used to perform several evolutive analisys. C<new> accepts the
+The new class method construct a new L<Molevol::Complex> object. The returned
+object can be used to perform several evolutive analysis. C<new> accepts the
 following parameters in an input hash as above used C<%input_data>:
 
 =over 4
@@ -81,7 +81,7 @@ retrieved by a previous analysis on the same chain
 
 =item * B<alignfilepath> (required)
 
-A valid DNA alignment file path. The alignment must correspond with the specified
+A valid DNA multiple alignment file path. The alignment must correspond with the specified
 chain and must be at least as long as the pdb chain (x3)
 
 =item * B<chain> (required)
@@ -100,7 +100,7 @@ residue.
 
 =item * B<sthmargin> (default 0)
 
-An error margin for sth. For instance: if is set to 0.01, residues with exposure
+An error margin for B<sth>. For instance: if is set to 0.01, residues with exposure
 higher than 0.06 will be considered as exposed, those with exposure lower than
 0.04 will be buried and those residues with exposure between 0.04 and 0.06 will
 not be considered
@@ -142,7 +142,7 @@ Specify the format of the output sub-alignments. As above.
 =item * B<gc> (default 0)
 
 The genetic code. The attribute must be one of the following integers, which
-correspond with the indicated:
+correspond with the indicated genetic code:
     
     0: Standar
     1: Mammailan mitochondrial
@@ -174,7 +174,7 @@ The path to the DSSP binary
 
     Title   : run
     Usage   : $obj->run
-    Function: Launch the whole workflow analisys
+    Function: Launch the whole workflow analysis
     Returns : 
     Args    :
 
@@ -182,7 +182,7 @@ The path to the DSSP binary
 
     Title   : run_struct
     Usage   : $obj->run_struct
-    Function: Launch structural analisys and stores the result in the attribute:
+    Function: Launch structural analysis and stores the result in the attribute:
               "structdata"
     Returns : True if success
     Args    :
@@ -233,14 +233,14 @@ The path to the DSSP binary
 
 =head1 PROCESSED DATA STORAGE
 
-Once each analisys has been performed, the resulting data is stored in other
+Once each analysis has been performed, the resulting data is stored in other
 setable attributes:
 
 =over 4
 
 =item * B<structdata>
 
-[Array] A table with the structural information calculated by Coevolution::Contact.pm
+[Array] A table with the structural information calculated by Molevol::Contact.pm
 and DSSP
 
 =item * B<lists>
@@ -259,7 +259,7 @@ The key for a given item is the name for the category.
 
 =item * B<pamlres>
 
-[Hash] Results for evolutive analisys. Each item contains the results for a
+[Hash] Results for evolutive analysis. Each item contains the results for a
 given sub-alignment (see above)
 
 =item * B<stats>
@@ -271,9 +271,15 @@ given sub-alignment (see above)
 =head1 SECONDARY METHODS (but not less important)
 
 All attributes are accesible and mutable from methods called get_attribute and
-set_attribute, respectively. For example, to get the value for the proximity threshold:
-
-    $proximity_threshold = $obj->get_pth;
+set_attribute, respectively. For example:
+    
+    # Set the proximity threshold ("pth") to 3 Angstroms
+    $obj->set_pth(3);
+    # Print the current value of the attribute "pth"
+    print $obj->get_pth;
+    
+The processed data is also stored in attributes. Thus, this kind of methods can
+also be used to access and modify the results.
 
 =head1 AUTHOR - Hector Valverde
 
@@ -285,15 +291,15 @@ Juan Carlos Aledo, C<< <caledo@uma.es> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-coevolution-compcoe at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Coevolution-Compcoe>.
+Please report any bugs or feature requests to C<bug-Molevol-Complex at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Molevol-Complex>.
 I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the UNIX man command.
 
-    man Coevolution::Compcoe
+    man Molevol::Complex
 
 
 =head1 LICENSE AND COPYRIGHT
