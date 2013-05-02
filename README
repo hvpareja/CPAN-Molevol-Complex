@@ -1,15 +1,50 @@
 Molevol-Complex
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+This module integrates a workflow aimed to address the evolvability of
+the contact interfaces within a protein complex. Some structural and
+evolutive analisys are performed by external software, which is needed
+to be installed before install and/or run this module.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+This README provides instructions on how to install the module.
+
+REQUERIMENTS
+
+1. PAML - Phylogenetic Analysis by Maximum Likelihood
+
+PAML is a package of programs for phylogenetic analyses of DNA or protein
+sequences using maximum likelihood. It must be correctly installed before
+run Molevol::Complex. Concretely, an environment variable called "PAMLDIR"
+must be set with the value of the PAML binaries directory.
+
+This software can be downloaded for free from the author website:
+
+http://abacus.gene.ucl.ac.uk/software/paml.html
+
+Once PAML is intalled, this environment variable can be set as follow:
+
+	export PAMLDIR='/path/to/paml4x/bin/'  # for Bourne, bash, and related shells
+	setenv PAMLDIR='/path/to/paml4x/bin/'  # for csh and related shells
+
+2. DSSP - Dictionary of protein secondary structure
+
+The DSSP program was designed by Wolfgang Kabsch and Chris Sander to
+standardize secondary structure assignment. It is used by this module
+to analyze the accesible surface of each residue.
+
+Binaires can be donwloaded from the authors website:
+
+http://swift.cmbi.ru.nl/gv/dssp/
+
+The module calls this program as 'dssp' by default, but this value can
+be modified in each run.
+
+3. Bioperl and Bioperl-run
+
+The Bioperl and Bioperl-run packages are used to run the analysis. They
+can be installed through public repositories sush as CPAN or Fink, or manually
+after donwload from the community website:
+
+http://www.bioperl.org/wiki/Getting_BioPerl
 
 
 INSTALLATION
@@ -30,22 +65,13 @@ man command.
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Molevol-Complex
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Molevol-Complex
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Molevol-Complex
-
-    Search CPAN
-        http://search.cpan.org/dist/Molevol-Complex/
+    Official Website
+	http://mecom.hval.es
 
 
 LICENSE AND COPYRIGHT
 
-Copyright (C) 2013 Hector Valverde
+Copyright (C) 2013 Hector Valverde and Juan Carlos Aledo
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
