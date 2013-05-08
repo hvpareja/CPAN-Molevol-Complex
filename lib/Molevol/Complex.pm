@@ -19,7 +19,7 @@ package Molevol::Complex;
 use 5.006;
 use strict;
 no strict "refs";
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # Own modules
 use Molevol::Contact; 
@@ -225,7 +225,7 @@ sub _run_contacts{
    
     print "\nCalculating contacts ... it may take a few minutes, please wait.\n";
                                  
-    my $obj_contact = new Coevolution::Contact("th"         => $self->get_pth,
+    my $obj_contact = new Molevol::Contact("th"         => $self->get_pth,
                                                "pdb"        => $stream,
                                                "chain"      => $self->get_chain);
     
