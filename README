@@ -7,7 +7,7 @@ to be installed before install and/or run this module.
 
 This README provides instructions on how to install the module.
 
-REQUERIMENTS
+REQUIREMENTS
 
 1. PAML - Phylogenetic Analysis by Maximum Likelihood
 
@@ -49,7 +49,8 @@ http://www.bioperl.org/wiki/Getting_BioPerl
 
 INSTALLATION
 
-To install this module, run the following commands:
+Once all requirements are installed, install this module running the following
+commands:
 
 	perl Makefile.PL
 	make

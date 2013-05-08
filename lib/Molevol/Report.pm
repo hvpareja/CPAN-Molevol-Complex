@@ -18,7 +18,6 @@ package Molevol::Report;
 use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 use Number::FormatEng qw(:all);
-use Data::Dumper;
 
 sub get_gc{
     

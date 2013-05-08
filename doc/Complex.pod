@@ -4,7 +4,7 @@ Molevol::Complex - A Perl module for protein contact interfaces evolutive analys
 
 =head1 VERSION
 
-Version 1.03
+Version 1.04
 
 =head1 SYNOPSIS
 
@@ -231,6 +231,23 @@ The path to the DSSP binary
     Returns : [String] HTML report with the results and input data
     Args    :
 
+=head1 AUXILIAR METHODS
+
+=head2 cat_aln()
+
+    Title   : run_report
+    Usage   : $obj->cat_aln(@alns)
+    Function: Concatenates alignment objects. Sequences are identified by id.
+             An error will be thrown if the sequence ids are not unique in the
+             first alignment. If any ids are not present or not unique in any
+             of the additional alignments then those sequences are omitted from
+             the concatenated alignment, and a warning is issued. An error will
+             be thrown if any of the alignments are not flush, since
+             concatenating such alignments is unlikely to make biological
+             sense.
+    Returns : A unique Bio::SimpleAlign object
+    Args    : A list of Bio::SimpleAlign objects
+
 =head1 PROCESSED DATA STORAGE
 
 Once each analysis has been performed, the resulting data is stored in other
@@ -296,6 +313,11 @@ the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Molevol-Co
 I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
+
+This module is the program core of MECOM Perl program. Further information about
+this project is available at:
+
+    http://mecom.hval.es/
 
 You can find documentation for this module with the UNIX man command.
 

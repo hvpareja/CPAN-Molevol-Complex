@@ -19,7 +19,7 @@ package Molevol::Complex;
 use 5.006;
 use strict;
 no strict "refs";
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 # Own modules
 use Molevol::Contact; 
@@ -34,10 +34,10 @@ use Statistics::RatioVariance;  # Avaliable from CPAN
 use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 use Bio::SimpleAlign;
+use Bio::Align::Utilities qw(:all);
 use warnings;
 use Carp;
 use Bio::AlignIO;
-use Data::Dumper;
 
 # -----------------------------------------------------------------------------
 # Class data                                                          Chap.  1
@@ -410,7 +410,19 @@ sub run_report{
 # -----------------------------------------------------------------------------
 # Auxiliar Methods                                                    Chap.  4
 # -----------------------------------------------------------------------------
-
+# Concatenate alignments
+# This is a global function and must be called as
+# Molevol::Complex->cat_aln(@alns);
+sub cat_aln{
+    
+    # Bio::SimpleAlign objects as arguments
+    my ($self, @alns) = @_;
+    # Call function Bio::Align::Utilities->cat();
+    my $merge_aln = cat(@alns);
+    
+    return $merge_aln;
+    
+}
 # -----------------------------------------------------------------------------
 #                                                                            4.
 
